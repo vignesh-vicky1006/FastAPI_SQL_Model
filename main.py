@@ -30,6 +30,6 @@ async def register(user: schemas.UserCreate, session: AsyncSession = Depends(get
 async def read_users_me(current_user=Depends(auth.get_current_user)):
     return current_user
 
-@app.get("/ping")
-async def ping():
-    return {"message": "pong"}
+# @app.get("/ping")
+# async def ping():
+#     return {"message": "pong"}

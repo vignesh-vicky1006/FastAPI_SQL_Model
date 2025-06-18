@@ -1,6 +1,51 @@
-*.pyc
-*.db
+# Byte-compiled / optimized / DLL files
 __pycache__/
-.vscode
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
 env/
-.env/
+venv/
+ENV/
+env.bak/
+
+# Environment variables
+.env
+.env.*
+
+# VSCode settings
+.vscode/
+
+# Database files
+*.db
+*.sqlite3
+
+# Alembic
+alembic/versions/*.pyc
+alembic/__pycache__/
+
+# Pytest and test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# macOS system files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Python wheels
+*.whl
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/

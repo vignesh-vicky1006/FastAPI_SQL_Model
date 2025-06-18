@@ -5,7 +5,7 @@ from .schemas import UserCreate
 from .auth import get_password_hash
 
 async def create_user(session: AsyncSession, user_in: UserCreate):
-    db_user = User(email=user_in.email, hashed_password=get_password_hash(user_in.password))
+    db_user = User(email=user_in.email, hashed_password=get_password_hash(user_in.password),mobile_number=user_in.mobile_number)
     session.add(db_user)
     await session.commit()
     await session.refresh(db_user)
