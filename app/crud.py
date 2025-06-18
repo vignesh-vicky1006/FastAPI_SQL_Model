@@ -14,3 +14,11 @@ async def create_user(session: AsyncSession, user_in: UserCreate):
 async def get_user_by_email(session: AsyncSession, email: str):
     result = await session.execute(select(User).where(User.email == email))
     return result.scalar_one_or_none()
+
+
+async def get_user_details(session:AsyncSession):
+    result = await session.execute(select(User))
+    users = result.scalars().all()
+    return users
+
+

@@ -9,7 +9,7 @@ class UserCreate(BaseModel):
 class UserRead(BaseModel):
     id: int
     email: str
-    mobile_number : int
+    mobile_number : Optional[int]
 
 class Token(BaseModel):
     access_token: str

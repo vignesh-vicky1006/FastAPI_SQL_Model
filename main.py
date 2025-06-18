@@ -3,6 +3,7 @@ from app import schemas, crud, auth
 from app.db import get_session
 from sqlmodel.ext.asyncio.session import AsyncSession
 from fastapi.security import OAuth2PasswordRequestForm
+from typing import List
 
 app = FastAPI()
 
@@ -29,6 +30,13 @@ async def register(user: schemas.UserCreate, session: AsyncSession = Depends(get
 @app.get("/users/me/", response_model=schemas.UserRead)
 async def read_users_me(current_user=Depends(auth.get_current_user)):
     return current_user
+
+@app.get("/users/",response_model=List[schemas.UserRead])
+async def read_users(db_Session:AsyncSession=Depends(get_session)):
+    users= await crud.get_user_details(db_Session)
+    return users
+
+
 
 # @app.get("/ping")
 # async def ping():
