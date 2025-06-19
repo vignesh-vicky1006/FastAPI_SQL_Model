@@ -36,6 +36,16 @@ async def read_users(db_Session:AsyncSession=Depends(get_session)):
     users= await crud.get_user_details(db_Session)
     return users
 
+@app.post("/rolemaster/",response_model=schemas.RolemasterRead)
+async def create_role(role : schemas.RolemasterCrete , session:AsyncSession=Depends(get_session)):
+    roles = await crud.create_rolemaster(session,role)
+    return roles
+
+@app.get("/rolemapp/",response_model=List[schemas.RolemapRead])
+async def read_userrole(user=Depends(auth.get_current_user),session:AsyncSession = Depends(get_session)):
+    userroles = await crud.userroles_read(session,user.id)
+    return userroles
+
 
 
 # @app.get("/ping")
